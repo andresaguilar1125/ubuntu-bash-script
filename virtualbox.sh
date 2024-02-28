@@ -23,6 +23,17 @@ sudo dpkg -i virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 #  Step 4 : Install missing dependencies
 sudo apt-get update -y && sudo apt --fix-broken install -y
 
+# 
+sudo -i
+mkdir /root/module-signing
+cd /root/module-signing
+openssl req -new -x509 -newkey rsa:2048
+
+ mokutil --import /root/module-signing/MOK.der
+    input password:
+    input password again:
+# https://superuser.com/questions/1438279/how-to-sign-a-kernel-module-ubuntu-18-04
+
 # --------------------------------------------
 #  Step 5: Reinstall virtualbox-dkms
 sudo apt install --reinstall virtualbox-dkms -y 
