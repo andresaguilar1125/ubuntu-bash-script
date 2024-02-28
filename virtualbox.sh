@@ -18,39 +18,11 @@ wget https://download.virtualbox.org/virtualbox/7.0.14/VBoxGuestAdditions_7.0.14
 wget https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Extension_Pack-7.0.14.vbox-extpack
 
 # *********************************************************************************************
-# Step 3: Install the VirtualBox package
-sudo apt install -f virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
+# Step 3: Install the VirtualBox package through gdebi to install missing dependencies
+sudo gdebi virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 
-# *********************************************************************************************
-# Step 4: Install missing dependencies
-sudo apt-get update -y && sudo apt --fix-broken install -y
- 
-
-# *********************************************************************************************
-# Step 8: Change host key combination to AltGr
-VBoxManage setextradata global "GUI/Input/HostKeyCombination" AltGraph
-
-# *********************************************************************************************
-# Step 9: Accept license and install the VirtualBox Extension Pack
-sudo VBoxManage extpack install --replace ~/vbox/Oracle_VM_VirtualBox_Extension_Pack-7.0.14.vbox-extpack --accept-license=sha256
-
-
-# *********************************************************************************************
-#  Step XX: Remove vbox config and files
-
-sudo apt-get purge "^virtualbox-.*"
-
-# Remove VirtualBox package
-sudo apt-get remove --purge virtualbox && \
-
-# Remove VirtualBox VMs directory
-sudo rm ~/"VirtualBox VMs" -Rf && \
-
-# Remove VirtualBox configuration directory
-sudo rm ~/.config/VirtualBox/ -Rf && \
-
-# Remove vbox.cfg file
-sudo rm -f /etc/vbox/vbox.cfg && \
-
-# Remove any remaining dependencies that were installed automatically and are no longer needed
-sudo apt-get autoremove -y
+# There were problems setting up VirtualBox.  To re-start the set-up process, run
+  /sbin/vboxconfig
+as root.  If your system is using EFI Secure Boot you may need to sign the
+kernel modules (vboxdrv, vboxnetflt, vboxnetadp, vboxpci) before you can load
+them. Please see your Linux system's documentation for more information.
