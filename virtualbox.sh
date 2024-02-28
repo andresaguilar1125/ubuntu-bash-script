@@ -1,20 +1,37 @@
-# ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-# Oracle Virtualbox
-# ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+# Step 1: Create directory on home ~ to store files
+mkdir -p ~/vbox &&
 
-# no descargar del sitio principal solo del repositorio con deb y extpack especifica
-# files from repo download.virtualbox.org/virtualbox/ 
+# cd to this directory
+cd ~/vbox &&
+
+# Step 2: Download files from repo download.virtualbox.org/virtualbox/
+
 # get deb for amd64 arch
-wget https://download.virtualbox.org/virtualbox/6.1.0_RC1/VirtualBox-6.1.0_RC1-134891-Linux_amd64.run
+wget https://download.virtualbox.org/virtualbox/6.1.50/VirtualBox-6.1.50-161033-Linux_amd64.run &&
+
 # get iso for version
-wget https://download.virtualbox.org/virtualbox/6.1.0_RC1/VBoxGuestAdditions_6.1.0_RC1.iso
+wget https://download.virtualbox.org/virtualbox/6.1.50/VBoxGuestAdditions_6.1.50.iso &&
+
 # get extension pack
-wget https://download.virtualbox.org/virtualbox/6.1.0_RC1/Oracle_VM_VirtualBox_Extension_Pack-6.1.0_RC1-134891.vbox-extpack
-# run later
-# add users vboxusers to the current user
-# run script: sudo adduser $USER vboxusers
+wget https://download.virtualbox.org/virtualbox/6.1.50/Oracle_VM_VirtualBox_Extension_Pack-6.1.50.vbox-extpack &&
+
+# Step 3: Execute linux amd64 run
+sudo ./VirtualBox-6.1.50-161033-Linux_amd64.run
+
+
+
+# Step2: 
+
 # before first use
 $ sudo apt install --reinstall virtualbox-dkms && sudo apt install libelf-dev -y \ sudo /sbin/vboxconfig
+
+
+# add users vboxusers to the current user
+sudo adduser $USER vboxusers
+
 # make sure to reboot if secure boot is enabled to setup KOM or just disable secure boot
-# not forget to change the host key 
+
+# https://devicetests.com/change-virtualbox-host-key-ubuntu
+# change host key from terminal
+sudo nano ~/.config/VirtualBox/VirtualBox.xml
 
