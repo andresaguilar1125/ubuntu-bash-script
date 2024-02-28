@@ -18,6 +18,15 @@ wget https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Exte
 # Step 3: Install the VirtualBox package
 sudo dpkg -i virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 
+# Step 4 : Install misssing dependencies
+sudo apt-get update -y && sudo apt --fix-broken install -y
+
+# Setp 5 
+sudo apt install --reinstall virtualbox-dkms -y 
+
+# Step 6
+sudo /sbin/vboxconfig
+
 
 
 # Step2: 
