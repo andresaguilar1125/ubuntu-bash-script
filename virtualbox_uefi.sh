@@ -12,6 +12,9 @@ sudo mokutil --import MOK.der
 # Step 4 : Sign modules virtualbox (vboxdrv, vboxnetflt, vboxnetadp) using the generated key.
 sudo apt-get install linux-headers-$(uname -r)
 
+# Step 4 : Reinstall might be necessary to keep virtualbox latest version and resigned keys.
+sudo apt-get install --reinstall linux-headers-$(uname -r)
+
 # Step 5 : Reboot pc especially for Secure Boot to take effect.
 sudo reboot
 
