@@ -6,6 +6,7 @@ openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.d
 
 # *********************************************************************************************
 # Step 2 : Install mokutil utility for managing Machine Owner Keys (MOKs) on UEFI systems
+# to manage mok keys docs https://manpages.ubuntu.com/manpages/lunar/man1/mokutil.1.html
 sudo apt install mokutil
 
 # Enroll Key (`MOK.der`) into the system's MOK list using mokutil. This is necessary for Secure Boot.
@@ -53,6 +54,10 @@ sudo rm -rf /ssh
 
 # Purge and remove virtualbox-dkms package
 sudo apt-get remove --purge virtualbox-dkms
+
+# Remove all MOK enrolled
+# https://askubuntu.com/questions/805152/is-it-possible-to-delete-an-enrolled-key-using-mokutil-without-the-original-der
+sudo mokutil --reset
 
 # update and purge
 sudo apt-get autopurge -y && sudo apt-get update -y
