@@ -15,11 +15,10 @@ sudo apt-get install linux-headers-$(uname -r)
 # Step 4 : Reinstall might be necessary to keep virtualbox latest version and resigned keys.
 sudo apt-get install --reinstall linux-headers-$(uname -r)
 
+# Step 5: Sign each of the modules for virtualbox.
+sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxdrv)
+sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetflt)
+sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetadp)
+
 # Step 5 : Reboot pc especially for Secure Boot to take effect.
 sudo reboot
-
-# REVIEW: Sign modules virtualbox (vboxdrv, vboxnetflt, vboxnetadp) using the generated key.
-#sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxdrv)
-#sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetflt)
-#sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetadp)
-
