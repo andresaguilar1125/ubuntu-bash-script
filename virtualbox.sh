@@ -38,6 +38,8 @@ sudo VBoxManage extpack install --replace ~/vbox/Oracle_VM_VirtualBox_Extension_
 # *********************************************************************************************
 #  Step XX: Remove vbox config and files
 
+sudo apt-get purge "^virtualbox-.*"
+
 # Remove VirtualBox package
 sudo apt-get remove --purge virtualbox && \
 
@@ -49,15 +51,6 @@ sudo rm ~/.config/VirtualBox/ -Rf && \
 
 # Remove vbox.cfg file
 sudo rm -f /etc/vbox/vbox.cfg && \
-
-# Remove directory ssh keys
-sudo rm -rf /ssh && \
-
-# Remove virtualbox-dkms package
-sudo apt-get remove virtualbox-dkms && \
-
-# Purge virtualbox-dkms package
-sudo apt-get remove --purge virtualbox-dkms && \
 
 # Remove any remaining dependencies that were installed automatically and are no longer needed
 sudo apt-get autoremove -y
