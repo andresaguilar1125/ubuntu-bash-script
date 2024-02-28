@@ -1,25 +1,23 @@
-# Step 1: Create directory on home ~ to store files
+# Step 1: Create directory to store files in home directory
 mkdir -p ~/vbox &&
 
-# cd to this directory
+# Change directory to the newly created one
 cd ~/vbox &&
 
-# Step 2: Download files from repo download.virtualbox.org/virtualbox/
+# Step 2: Download files from VirtualBox repository
 
-# get deb for amd64 arch
-wget https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-Linux_amd64.run &&
-VirtualBox-7.0.14-161095
-# get iso for version
+# Download the VirtualBox package for Ubuntu (amd64 architecture)
+wget https://download.virtualbox.org/virtualbox/7.0.14/virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb &&
+
+# Download the Guest Additions ISO
 wget https://download.virtualbox.org/virtualbox/7.0.14/VBoxGuestAdditions_7.0.14.iso &&
 
-# get extension pack
+# Download the VirtualBox Extension Pack
 wget https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Extension_Pack-7.0.14.vbox-extpack &&
 
-# Step3 : Make it executable 
-sudo chmod +x VirtualBox-7.0.14-161095-Linux_amd64.run
+# Step 3: Install the VirtualBox package
+sudo dpkg -i virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 
-# Step4: Execute linux amd64 run
-sudo ./VirtualBox-7.0.14-161095-Linux_amd64.run --progress
 
 
 # Step2: 
