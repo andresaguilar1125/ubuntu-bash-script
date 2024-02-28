@@ -7,20 +7,19 @@ cd ~/vbox &&
 # Step 2: Download files from repo download.virtualbox.org/virtualbox/
 
 # get deb for amd64 arch
-wget https://download.virtualbox.org/virtualbox/6.1.50/VirtualBox-6.1.50-161033-Linux_amd64.run &&
-
+wget https://download.virtualbox.org/virtualbox/7.0.14/VirtualBox-7.0.14-161095-Linux_amd64.run &&
+VirtualBox-7.0.14-161095
 # get iso for version
-wget https://download.virtualbox.org/virtualbox/6.1.50/VBoxGuestAdditions_6.1.50.iso &&
+wget https://download.virtualbox.org/virtualbox/7.0.14/VBoxGuestAdditions_7.0.14.iso &&
 
 # get extension pack
-wget https://download.virtualbox.org/virtualbox/6.1.50/Oracle_VM_VirtualBox_Extension_Pack-6.1.50.vbox-extpack &&
+wget https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Extension_Pack-7.0.14.vbox-extpack &&
 
 # Step3 : Make it executable 
-sudo chmod +x VirtualBox-6.1.50-161033-Linux_amd64.run
+sudo chmod +x VirtualBox-7.0.14-161095-Linux_amd64.run
 
 # Step4: Execute linux amd64 run
-sudo ./VirtualBox-6.1.50-161033-Linux_amd64.run
-
+sudo ./VirtualBox-7.0.14-161095-Linux_amd64.run --progress
 
 
 # Step2: 
@@ -39,9 +38,12 @@ sudo adduser $USER vboxusers
 sudo nano ~/.config/VirtualBox/VirtualBox.xml
 
 
+
+
+
+
 # Uninstall virtualbox 
 sudo apt-get remove --purge virtualbox 
 # Run these commands to delete all virtual machines and settings and Virtual Hard Drives:
-
 sudo rm ~/"VirtualBox VMs" -Rf
 sudo rm ~/.config/VirtualBox/ -Rf
