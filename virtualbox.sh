@@ -24,20 +24,7 @@ sudo apt install -f virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 # *********************************************************************************************
 # Step 4: Install missing dependencies
 sudo apt-get update -y && sudo apt --fix-broken install -y
-
-# *********************************************************************************************
-# Step 5: Create RSA keys
-sudo mkdir -p /root/module-signing
-cd /root/module-signing
-sudo openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -days 365 -nodes -subj "/CN=My Corporation/"
-
-# *********************************************************************************************
-# Step 6: Install mokutil
-sudo apt-get install mokutil -y
-
-# *********************************************************************************************
-# Step 7: Import keys after reboot PC with input password virtualbox
-sudo mokutil --import /root/module-signing/MOK.der
+ 
 
 # *********************************************************************************************
 # Step 8: Change host key combination to AltGr
