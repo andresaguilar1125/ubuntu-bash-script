@@ -29,6 +29,8 @@ mkdir /root/module-signing
 cd /root/module-signing
 openssl req -new -x509 -newkey rsa:2048
 
+sudo apt-get install mokutil -y
+
  mokutil --import /root/module-signing/MOK.der
     input password:
     input password again:
