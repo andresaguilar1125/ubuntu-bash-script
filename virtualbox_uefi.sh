@@ -16,13 +16,13 @@ sudo apt-get install linux-headers-`uname -r`
 sudo reboot
 
 # REVIEW: Install DKMS virtualbox
-sudo apt install virtualbox-dkms -y
-sudo apt install --reinstall virtualbox-dkms -y
+#sudo apt install virtualbox-dkms -y
+#sudo apt install --reinstall virtualbox-dkms -y
 
 # REVIEW: Sign modules virtualbox (vboxdrv, vboxnetflt, vboxnetadp) using the generated key.
-sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxdrv)
-sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetflt)
-sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetadp)
+#sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxdrv)
+#sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetflt)
+#sudo /usr/src/linux-headers-$(uname -r)/scripts/sign-file sha256 ./MOK.priv ./MOK.der $(modinfo -n vboxnetadp)
 
 
 # *********************************************************************************************
