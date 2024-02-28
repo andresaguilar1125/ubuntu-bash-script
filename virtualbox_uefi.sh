@@ -55,8 +55,7 @@ sudo rm -rf /ssh
 # Purge and remove virtualbox-dkms package
 sudo apt-get remove --purge virtualbox-dkms
 
-# Remove all MOK enrolled
-# https://askubuntu.com/questions/805152/is-it-possible-to-delete-an-enrolled-key-using-mokutil-without-the-original-der
+# Remove all MOK enrolled ⚠️⚠️ RESET PC ⚠️⚠️
 sudo mokutil --reset
 
 # update and purge
