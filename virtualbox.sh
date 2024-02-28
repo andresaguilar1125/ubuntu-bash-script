@@ -19,7 +19,7 @@ wget https://download.virtualbox.org/virtualbox/7.0.14/Oracle_VM_VirtualBox_Exte
 
 # *********************************************************************************************
 # Step 3: Install the VirtualBox package
-sudo dpkg -i virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
+sudo apt install -f virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 
 # *********************************************************************************************
 # Step 4: Install missing dependencies
@@ -52,25 +52,25 @@ sudo VBoxManage extpack install --replace ~/vbox/Oracle_VM_VirtualBox_Extension_
 #  Step XX: Remove vbox config and files
 
 # Remove VirtualBox package
-sudo apt-get remove --purge virtualbox
+sudo apt-get remove --purge virtualbox && \
 
 # Remove VirtualBox VMs directory
-sudo rm ~/"VirtualBox VMs" -Rf
+sudo rm ~/"VirtualBox VMs" -Rf && \
 
 # Remove VirtualBox configuration directory
-sudo rm ~/.config/VirtualBox/ -Rf
+sudo rm ~/.config/VirtualBox/ -Rf && \
 
 # Remove vbox.cfg file
-sudo rm -f /etc/vbox/vbox.cfg
+sudo rm -f /etc/vbox/vbox.cfg && \
 
 # Remove directory ssh keys
-sudo rm -rf /ssh
+sudo rm -rf /ssh && \
 
 # Remove virtualbox-dkms package
-sudo apt-get remove virtualbox-dkms
+sudo apt-get remove virtualbox-dkms && \
 
 # Purge virtualbox-dkms package
-sudo apt-get remove --purge virtualbox-dkms
+sudo apt-get remove --purge virtualbox-dkms && \
 
 # Remove any remaining dependencies that were installed automatically and are no longer needed
 sudo apt-get autoremove -y
