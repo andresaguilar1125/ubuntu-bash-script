@@ -15,7 +15,10 @@ wget https://download.virtualbox.org/virtualbox/6.1.50/VBoxGuestAdditions_6.1.50
 # get extension pack
 wget https://download.virtualbox.org/virtualbox/6.1.50/Oracle_VM_VirtualBox_Extension_Pack-6.1.50.vbox-extpack &&
 
-# Step 3: Execute linux amd64 run
+# Step3 : Make it executable 
+sudo chmod +x VirtualBox-6.1.50-161033-Linux_amd64.run
+
+# Step4: Execute linux amd64 run
 sudo ./VirtualBox-6.1.50-161033-Linux_amd64.run
 
 
@@ -35,3 +38,10 @@ sudo adduser $USER vboxusers
 # change host key from terminal
 sudo nano ~/.config/VirtualBox/VirtualBox.xml
 
+
+# Uninstall virtualbox 
+sudo apt-get remove --purge virtualbox 
+# Run these commands to delete all virtual machines and settings and Virtual Hard Drives:
+
+sudo rm ~/"VirtualBox VMs" -Rf
+sudo rm ~/.config/VirtualBox/ -Rf
