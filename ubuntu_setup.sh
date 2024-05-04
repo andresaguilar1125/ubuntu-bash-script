@@ -1,18 +1,24 @@
 #!/bin/bash
-# Script for various system configurations and installations
+# Script to configure system settings on Ubuntu Linux
 
-# Install net-tools for network utilities
-sudo apt install net-tools -y
-
-# Install curl for transferring data
-sudo apt install curl -y
+# Function to check if a command executed successfully
+check_command() {
+    if [ $? -ne 0 ]; then
+        echo "Error: $1 failed. Exiting..."
+        exit 1
+    fi
+}
 
 # Avoid system suspension when closing the lid
-echo "HandleLidSwitch=ignore" | sudo tee -a /etc/systemd/logind.conf > /dev/null \
-&& sudo systemctl restart systemd-logind
+echo "Configuring lid switch handling..."
+echo "HandleLidSwitch=ignore" | sudo tee -a /etc/systemd/logind.conf > /dev/null
+check_command "Configure lid switch handling"
+sudo systemctl restart systemd-logind
+check_command "Restart systemd-logind service"
 
 # Disable password prompt for current user in sudoers file
-echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+echo "Disabling password prompt for current user in sudoers file..."
+echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers > /dev/null
+check_command "Disable password prompt for current user in sudoers file"
 
-# Allow unauthenticated repositories (Use with caution)
-sudo apt-get update --allow-insecure-repositories
+echo "System configuration completed successfully!"
